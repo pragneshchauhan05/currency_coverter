@@ -65,4 +65,4 @@ window.addEventListener("load", () => {
   updateExchangeRate();
 });
 
-console.log("hello");
+console.lo
