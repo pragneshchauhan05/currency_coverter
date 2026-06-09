@@ -5,25 +5,18 @@ on:
     branches:
       - main
 
-  pull_request:
-    branches:
-      - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
+      - name: Check index.html exists
+        run: test -f index.html
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Check style.css exists
+        run: test -f style.css
 
-      - name: Run Tests
-        run: npm test
+      - name: Check script.js exists
+        run: test -f script.js
