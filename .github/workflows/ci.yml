@@ -1,22 +1,26 @@
-name: Currency Converter CI
+name: Basic CI
 
 on:
   push:
     branches:
       - main
 
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check index.html exists
-        run: test -f index.html
+      - name: Verify files
+        run: |
+          test -f index.html
+          test -f style.css
+          test -f script.js
 
-      - name: Check style.css exists
-        run: test -f style.css
-
-      - name: Check script.js exists
-        run: test -f script.js
+      - name: Success
+        run: echo "Project checked successfully"
